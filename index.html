@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV | Aunhel John Adoptante (AJ)</title>
-    
+    <title>CV | Aunhel John Adoptante</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
     <style>
         body { 
             font-family: 'Inter', sans-serif; 
@@ -17,97 +15,102 @@
             background-position: center;
             background-attachment: fixed;
             background-repeat: no-repeat;
-            /* Darker base text for global readability */
-            color: #1e293b; /* Slate-800 */
+            color: #1e293b; 
         }
-        
         .wide-container {
-            background-color: rgba(255, 255, 255, 0.5); /* Increased opacity for text contrast */
+            background-color: rgba(255, 255, 255, 0.5); 
             backdrop-filter: blur(12px);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.4);
         }
-        
-
-        .experience-dot { position: relative; }
-        .experience-dot::before {
-            content: '';
-            position: absolute;
-            left: -33px;
-            top: 10px;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #0ea5e9;
-            border: 2px solid white;
-            box-shadow: 0 0 0 1px #0ea5e9;
-            z-index: 10;
-        }
-
-        .sidebar-border { border-left: 1px solid #f1f5f9; }
-
-        @media (max-width: 1024px) {
-            .sidebar-border { border-left: none; border-top: 1px solid #f1f5f9; margin-top: 2rem; padding-top: 2rem; }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.8s ease-out forwards;
-            opacity: 0;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        /* Footer text darkened for readability on the light blue background */
-        footer span, footer a { color: #334155; } /* Slate-700 */
+        .sidebar-border { border-left: 1px solid #e2e8f0; }
+        @media (max-width: 1024px) { .sidebar-border { border-left: none; border-top: 1px solid #e2e8f0; } }
+        .fade-in { animation: fadeIn 0.8s ease-out forwards; opacity: 0; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body class="text-slate-900 antialiased p-2 md:p-8 lg:p-12">
-
-    <main class="max-w-7xl mx-auto rounded-2xl wide-container overflow-hidden">
+<body class="antialiased p-2 md:p-8 lg:p-12">
+    <main class="max-w-7xl mx-auto rounded-3xl wide-container overflow-hidden">
         <div id="section-header" class="fade-in"></div>
-
+        
         <div class="grid grid-cols-1 lg:grid-cols-12">
             <div class="lg:col-span-9 p-8 md:p-12 lg:p-16">
                 <div id="section-research" class="fade-in"></div>
-                <div id="section-publications" class="mt-20 fade-in" style="animation-delay: 0.1s;"></div>
-                <div id="section-projects" class="mt-20 fade-in" style="animation-delay: 0.2s;"></div>
+                <div id="section-projects" class="mt-24 fade-in" style="animation-delay: 0.1s;"></div>
+                <div id="section-publications" class="mt-24 fade-in" style="animation-delay: 0.2s;"></div>
             </div>
 
-            <aside class="lg:col-span-3 p-8 lg:p-12 sidebar-border">
+            <aside class="lg:col-span-3 p-8 lg:p-12 sidebar-border bg-slate-50/20">
                 <div id="section-sidebar" class="fade-in" style="animation-delay: 0.3s;"></div>
             </aside>
         </div>
     </main>
 
-    <footer class="max-w-7xl mx-auto py-12 flex flex-col md:flex-row justify-between items-center text-slate-500 px-6">
-        <span class="text-[10px] font-bold uppercase tracking-[0.4em]">Aunhel John Adoptante • 2026</span>
-        <div class="flex gap-8 mt-4 md:mt-0">
-            <a href="https://github.com/aunheladoptante" target="_blank" class="hover:text-sky-600 transition text-sm font-bold uppercase tracking-widest">Github</a>
-            <a href="https://scholar.google.com/citations?user=s8GNZhEAAAAJ" target="_blank" class="hover:text-sky-600 transition text-sm font-bold uppercase tracking-widest">Scholar</a>
+    <footer class="max-w-7xl mx-auto py-12 flex justify-between items-center px-6 text-slate-700 font-bold text-[10px] uppercase tracking-[0.4em]">
+        <span>Aunhel John Adoptante • 2026</span>
+        <div class="flex gap-8">
+            <a href="https://github.com/aunheladoptante" target="_blank">Github</a>
+            <a href="https://scholar.google.com/citations?user=s8GNZhEAAAAJ" target="_blank">Scholar</a>
         </div>
     </footer>
 
     <script>
         async function loadSection(id, file) {
-            const container = document.getElementById(id);
             try {
                 const response = await fetch(`sections/${file}`);
-                if (!response.ok) throw new Error(`Could not fetch ${file}`);
                 const content = await response.text();
-                container.innerHTML = content;
-            } catch (err) {
-                console.error(`Error loading section [${file}]:`, err);
-                container.innerHTML = `<p class="text-red-400 text-xs">Error loading ${file}. Check your /sections/ folder.</p>`;
-            }
+                document.getElementById(id).innerHTML = content;
+            } catch (err) { console.error(`Error loading ${file}`, err); }
         }
-
         window.addEventListener('DOMContentLoaded', () => {
             loadSection('section-header', 'header.html');
             loadSection('section-research', 'research.html');
-            loadSection('section-publications', 'publications.html');
             loadSection('section-projects', 'projects.html');
+            loadSection('section-publications', 'publications.html');
             loadSection('section-sidebar', 'sidebar.html');
+        });
+
+        // Toggle Visibility
+        function toggleBib(id) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.classList.toggle('hidden');
+            if (!el.classList.contains('hidden')) el.classList.add('fade-in');
+        }
+
+        // Copy to Clipboard with Feedback
+        async function copyBib(event, id) {
+            const text = document.getElementById(id).innerText;
+            const btn = event.currentTarget;
+            const originalHTML = btn.innerHTML;
+
+            try {
+                await navigator.clipboard.writeText(text);
+                // Visual Feedback
+                btn.innerHTML = '<i class="fa-solid fa-check text-emerald-500"></i> <span class="text-emerald-600">Copied!</span>';
+                btn.classList.add('scale-105');
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.classList.remove('scale-105');
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy:', err);
+            }
+        }
+
+        async function loadSection(id, file) {
+            try {
+                const response = await fetch(`sections/${file}`);
+                const content = await response.text();
+                document.getElementById(id).innerHTML = content;
+            } catch (err) { console.error(`Error loading ${file}`, err); }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            ['header', 'research', 'projects', 'publications', 'sidebar'].forEach(s => 
+                loadSection(`section-${s}`, `${s}.html`)
+            );
         });
     </script>
 </body>

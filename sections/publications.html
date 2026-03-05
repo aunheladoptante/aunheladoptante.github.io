@@ -4,20 +4,27 @@
         <div class="w-full h-[1px] bg-slate-100"></div>
     </div>
 
-    <div class="space-y-12">
+    <div class="space-y-16">
 
         <div class="group">
             <h4 class="text-xl font-black text-slate-900 group-hover:text-sky-800 transition leading-snug">
                 Benchmarking Open-Source Large Language Models on Code-Switched Tagalog-English Retrieval Augmented Generation
             </h4>
-            <p class="text-sm text-slate-800 font-bold mt-2">
-                <span class="underline decoration-sky-400 font-black italic">A. J. M. Adoptante</span>, J. A. D. V. Castro, M. L. B. Medrano, A. P. B. Ocampo, E. C. Peramo, M. R. M. Miranda
+            <p class="text-sm text-slate-700 font-bold mt-2">
+                <span class="underline decoration-sky-400 font-black italic">Aunhel John M. Adoptante</span>, J. A. D. V. Castro, M. L. B. Medrano, A. P. B. Ocampo, E. C. Peramo, M. R. M. Miranda
             </p>
-            <p class="text-[13px] font-bold italic text-slate-500 mt-1">Journal of Advances in Information Technology (2025)</p>
-            <button onclick="toggleBib('bib25')" class="text-[9px] font-black text-slate-400 hover:text-sky-700 mt-3 uppercase tracking-widest flex items-center gap-2">
-                <i class="fa-solid fa-quote-left"></i> BibTeX
-            </button>
-            <pre id="bib25" class="hidden mt-4 p-4 bg-slate-50 rounded-xl text-[10px] text-slate-600 overflow-x-auto">@article{adoptante2025benchmarking,
+            <p class="text-[13px] font-bold italic text-slate-500 mt-1">Journal of Advances in Information Technology, Vol. 16, No. 2 (2025)</p>
+            
+            <div class="flex items-center gap-6 mt-4">
+                <button onclick="toggleBib('bib-bench')" class="text-[9px] font-black text-slate-400 hover:text-sky-700 uppercase tracking-widest flex items-center gap-2 transition-all">
+                    <i class="fa-solid fa-eye text-xs"></i> View BibTeX
+                </button>
+                <button onclick="copyBib(event, 'bib-bench')" class="text-[9px] font-black text-slate-400 hover:text-emerald-600 uppercase tracking-widest flex items-center gap-2 transition-all">
+                    <i class="fa-solid fa-copy text-xs"></i> Copy Citation
+                </button>
+            </div>
+
+            <pre id="bib-bench" class="hidden mt-4 p-4 bg-slate-900 text-slate-300 rounded-xl text-[10px] overflow-x-auto border border-slate-800">@article{adoptante2025benchmarking,
   title={Benchmarking Open-Source Large Language Models on Code-Switched Tagalog-English Retrieval Augmented Generation},
   author={Adoptante, Aunhel John M. and Castro, Jasper Adrian Dwight V. and Medrano, Micholo Lanz B. and Ocampo, Alyssa Patricia B. and Peramo, Elmer C. and Miranda, Melissa Ruth M.},
   journal={Journal of Advances in Information Technology},
@@ -32,14 +39,21 @@
             <h4 class="text-xl font-black text-slate-900 group-hover:text-sky-800 transition leading-snug">
                 iTANONG-DS: A Collection of Benchmark Datasets for Downstream Natural Language Processing Tasks on Select Philippine Languages
             </h4>
-            <p class="text-sm text-slate-800 font-bold mt-2">
-                M. L. Visperas, C. J. Borjal, <span class="underline decoration-sky-400 font-black italic">A. J. M. Adoptante</span>, D. S. R. Abacial, M. M. Decano, E. C. Peramo
+            <p class="text-sm text-slate-700 font-bold mt-2">
+                M. L. Visperas, C. J. Borjal, <span class="underline decoration-sky-400 font-black italic">Aunhel John M. Adoptante</span>, D. S. R. Abacial, M. M. Decano, E. C. Peramo
             </p>
             <p class="text-[13px] font-bold italic text-slate-500 mt-1">Proceedings of the 6th International Conference on Natural Language and Speech Processing (ICNLSP 2023)</p>
-            <button onclick="toggleBib('bib_itanong')" class="text-[9px] font-black text-slate-400 hover:text-sky-700 mt-3 uppercase tracking-widest flex items-center gap-2">
-                <i class="fa-solid fa-quote-left"></i> BibTeX
-            </button>
-            <pre id="bib_itanong" class="hidden mt-4 p-4 bg-slate-50 rounded-xl text-[10px] text-slate-600 overflow-x-auto">@inproceedings{visperas2023itanong,
+            
+            <div class="flex items-center gap-6 mt-4">
+                <button onclick="toggleBib('bib-itanong')" class="text-[9px] font-black text-slate-400 hover:text-sky-700 uppercase tracking-widest flex items-center gap-2">
+                    <i class="fa-solid fa-eye text-xs"></i> View BibTeX
+                </button>
+                <button onclick="copyBib(event, 'bib-itanong')" class="text-[9px] font-black text-slate-400 hover:text-emerald-600 uppercase tracking-widest flex items-center gap-2">
+                    <i class="fa-solid fa-copy text-xs"></i> Copy Citation
+                </button>
+            </div>
+
+            <pre id="bib-itanong" class="hidden mt-4 p-4 bg-slate-900 text-slate-300 rounded-xl text-[10px] overflow-x-auto border border-slate-800">@inproceedings{visperas2023itanong,
   title={iTANONG-DS: A Collection of Benchmark Datasets for Downstream Natural Language Processing Tasks on Select Philippine Languages},
   author={Visperas, Moses L and Borjal, Christalline Joie and Adoptante, Aunhel John M and Abacial, Danielle Shine R and Decano, Ma Miciella and Peramo, Elmer C},
   booktitle={Proceedings of the 6th International Conference on Natural Language and Speech Processing (ICNLSP 2023)},
@@ -52,14 +66,23 @@
             <h4 class="text-xl font-black text-slate-900 group-hover:text-sky-800 transition leading-snug">
                 Parallel Corpus Curation for Filipino Text-to-SQL Semantic Parsing
             </h4>
-            <p class="text-sm text-slate-800 font-bold mt-2">
-                C. J. Borjal, M. Visperas, <span class="underline decoration-sky-400 font-black italic">A. J. Adoptante</span>, M. T. Abia, J. K. Catapang, E. Peramo
+            <p class="text-sm text-slate-700 font-bold mt-2">
+                C. J. Borjal, M. Visperas, <span class="underline decoration-sky-400 font-black italic">Aunhel John Adoptante</span>, M. T. Abia, J. K. Catapang, E. Peramo
             </p>
             <p class="text-[13px] font-bold italic text-slate-500 mt-1">2023 International Conference on Artificial Intelligence in Information and Communication (ICAIIC)</p>
-            <button onclick="toggleBib('bib_parallel')" class="text-[9px] font-black text-slate-400 hover:text-sky-700 mt-3 uppercase tracking-widest flex items-center gap-2">
-                <i class="fa-solid fa-quote-left"></i> BibTeX
-            </button>
-            <pre id="bib_parallel" class="hidden mt-4 p-4 bg-slate-50 rounded-xl text-[10px] text-slate-600 overflow-x-auto">@inproceedings{borjal2023parallel,
+            
+            
+            
+            <div class="flex items-center gap-6 mt-4">
+                <button onclick="toggleBib('bib-sql-parallel')" class="text-[9px] font-black text-slate-400 hover:text-sky-700 uppercase tracking-widest flex items-center gap-2">
+                    <i class="fa-solid fa-eye text-xs"></i> View BibTeX
+                </button>
+                <button onclick="copyBib(event, 'bib-sql-parallel')" class="text-[9px] font-black text-slate-400 hover:text-emerald-600 uppercase tracking-widest flex items-center gap-2">
+                    <i class="fa-solid fa-copy text-xs"></i> Copy Citation
+                </button>
+            </div>
+
+            <pre id="bib-sql-parallel" class="hidden mt-4 p-4 bg-slate-900 text-slate-300 rounded-xl text-[10px] overflow-x-auto border border-slate-800">@inproceedings{borjal2023parallel,
   title={Parallel Corpus Curation for Filipino Text-to-SQL Semantic Parsing},
   author={Borjal, Christalline Joie and Visperas, Moses and Adoptante, Aunhel John and Abia, Ma Teresita and Catapang, Jasper Kyle and Peramo, Elmer},
   booktitle={2023 International Conference on Artificial Intelligence in Information and Communication (ICAIIC)},
@@ -73,14 +96,21 @@
             <h4 class="text-xl font-black text-slate-900 group-hover:text-sky-800 transition leading-snug">
                 On modern text-to-sql semantic parsing methodologies for natural language interface to databases: A comparative study
             </h4>
-            <p class="text-sm text-slate-800 font-bold mt-2">
-                M. Visperas, <span class="underline decoration-sky-400 font-black italic">A. J. Adoptante</span>, C. J. Borjal, M. T. Abia, J. K. Catapang, E. Peramo
+            <p class="text-sm text-slate-700 font-bold mt-2">
+                M. Visperas, <span class="underline decoration-sky-400 font-black italic">Aunhel John Adoptante</span>, C. J. Borjal, M. T. Abia, J. K. Catapang, E. Peramo
             </p>
             <p class="text-[13px] font-bold italic text-slate-500 mt-1">2023 International Conference on Artificial Intelligence in Information and Communication (ICAIIC)</p>
-            <button onclick="toggleBib('bib_modern')" class="text-[9px] font-black text-slate-400 hover:text-sky-700 mt-3 uppercase tracking-widest flex items-center gap-2">
-                <i class="fa-solid fa-quote-left"></i> BibTeX
-            </button>
-            <pre id="bib_modern" class="hidden mt-4 p-4 bg-slate-50 rounded-xl text-[10px] text-slate-600 overflow-x-auto">@inproceedings{visperas2023modern,
+            
+            <div class="flex items-center gap-6 mt-4">
+                <button onclick="toggleBib('bib-sql-study')" class="text-[9px] font-black text-slate-400 hover:text-sky-700 uppercase tracking-widest flex items-center gap-2">
+                    <i class="fa-solid fa-eye text-xs"></i> View BibTeX
+                </button>
+                <button onclick="copyBib(event, 'bib-sql-study')" class="text-[9px] font-black text-slate-400 hover:text-emerald-600 uppercase tracking-widest flex items-center gap-2">
+                    <i class="fa-solid fa-copy text-xs"></i> Copy Citation
+                </button>
+            </div>
+
+            <pre id="bib-sql-study" class="hidden mt-4 p-4 bg-slate-900 text-slate-300 rounded-xl text-[10px] overflow-x-auto border border-slate-800">@inproceedings{visperas2023modern,
   title={On modern text-to-sql semantic parsing methodologies for natural language interface to databases: A comparative study},
   author={Visperas, Moses and Adoptante, Aunhel John and Borjal, Christalline Joie and Abia, Ma Teresita and Catapang, Jasper Kyle and Peramo, Elmer},
   booktitle={2023 International Conference on Artificial Intelligence in Information and Communication (ICAIIC)},
@@ -94,14 +124,21 @@
             <h4 class="text-xl font-black text-slate-900 group-hover:text-sky-800 transition leading-snug">
                 Spoken-digit classification using artificial neural network
             </h4>
-            <p class="text-sm text-slate-800 font-bold mt-2">
-                <span class="underline decoration-sky-400 font-black italic">A. J. M. Adoptante</span>, A. M. Baes, J. C. A. Catilo, P. K. L. Lucero, et al.
+            <p class="text-sm text-slate-700 font-bold mt-2">
+                <span class="underline decoration-sky-400 font-black italic">Aunhel John M. Adoptante</span>, A. M. Baes, J. C. A. Catilo, P. K. L. Lucero, A. L. P. De Ocampo, A. S. Alon, R. M. Dellosa
             </p>
-            <p class="text-[13px] font-bold italic text-slate-500 mt-1">ASEAN Engineering Journal, Vol. 13, No. 1</p>
-            <button onclick="toggleBib('bib_spoken')" class="text-[9px] font-black text-slate-400 hover:text-sky-700 mt-3 uppercase tracking-widest flex items-center gap-2">
-                <i class="fa-solid fa-quote-left"></i> BibTeX
-            </button>
-            <pre id="bib_spoken" class="hidden mt-4 p-4 bg-slate-50 rounded-xl text-[10px] text-slate-600 overflow-x-auto">@article{adoptante2023spoken,
+            <p class="text-[13px] font-bold italic text-slate-500 mt-1">ASEAN Engineering Journal, Vol. 13, No. 1 (2023)</p>
+            
+            <div class="flex items-center gap-6 mt-4">
+                <button onclick="toggleBib('bib-spoken')" class="text-[9px] font-black text-slate-400 hover:text-sky-700 uppercase tracking-widest flex items-center gap-2">
+                    <i class="fa-solid fa-eye text-xs"></i> View BibTeX
+                </button>
+                <button onclick="copyBib(event, 'bib-spoken')" class="text-[9px] font-black text-slate-400 hover:text-emerald-600 uppercase tracking-widest flex items-center gap-2">
+                    <i class="fa-solid fa-copy text-xs"></i> Copy Citation
+                </button>
+            </div>
+
+            <pre id="bib-spoken" class="hidden mt-4 p-4 bg-slate-900 text-slate-300 rounded-xl text-[10px] overflow-x-auto border border-slate-800">@article{adoptante2023spoken,
   title={Spoken-digit classification using artificial neural network},
   author={Adoptante, Aunhel John M and Baes, Arnie M and Catilo, John Carlo A and Lucero, Patrick Kendrex L and De Ocampo, Anton Louise P and Alon, Alvin S and Dellosa, Rhowel M},
   journal={ASEAN Engineering Journal},
@@ -116,14 +153,23 @@
             <h4 class="text-xl font-black text-slate-900 group-hover:text-sky-800 transition leading-snug">
                 Deep autoencoders for denoising computerized tomography (CT) images
             </h4>
-            <p class="text-sm text-slate-800 font-bold mt-2">
-                <span class="underline decoration-sky-400 font-black italic">A. J. M. Adoptante</span>, A. S. Alon, S. Avasthi
+            <p class="text-sm text-slate-700 font-bold mt-2">
+                <span class="underline decoration-sky-400 font-black italic">Aunhel John M. Adoptante</span>, A. S. Alon, S. Avasthi
             </p>
-            <p class="text-[13px] font-bold italic text-slate-500 mt-1">International Research Journal on Innovations in Engineering, Science and Technology</p>
-            <button onclick="toggleBib('bib_auto')" class="text-[9px] font-black text-slate-400 hover:text-sky-700 mt-3 uppercase tracking-widest flex items-center gap-2">
-                <i class="fa-solid fa-quote-left"></i> BibTeX
-            </button>
-            <pre id="bib_auto" class="hidden mt-4 p-4 bg-slate-50 rounded-xl text-[10px] text-slate-600 overflow-x-auto">@article{adoptante2022deep,
+            <p class="text-[13px] font-bold italic text-slate-500 mt-1">International Research Journal on Innovations in Engineering, Science and Technology, Vol. 8 (2022)</p>
+            
+            
+            
+            <div class="flex items-center gap-6 mt-4">
+                <button onclick="toggleBib('bib-denoise')" class="text-[9px] font-black text-slate-400 hover:text-sky-700 uppercase tracking-widest flex items-center gap-2">
+                    <i class="fa-solid fa-eye text-xs"></i> View BibTeX
+                </button>
+                <button onclick="copyBib(event, 'bib-denoise')" class="text-[9px] font-black text-slate-400 hover:text-emerald-600 uppercase tracking-widest flex items-center gap-2">
+                    <i class="fa-solid fa-copy text-xs"></i> Copy Citation
+                </button>
+            </div>
+
+            <pre id="bib-denoise" class="hidden mt-4 p-4 bg-slate-900 text-slate-300 rounded-xl text-[10px] overflow-x-auto border border-slate-800">@article{adoptante2022deep,
   title={Deep autoencoders for denoising computerized tomography (CT) images},
   author={Adoptante, Aunhel John M and Alon, Alvin S and Avasthi, Sandhya},
   journal={International Research Journal on Innovations in Engineering, Science and Technology},
@@ -137,14 +183,21 @@
             <h4 class="text-xl font-black text-slate-900 group-hover:text-sky-800 transition leading-snug">
                 A novel screening tool system for depressive disorders using social media and artificial neural network
             </h4>
-            <p class="text-sm text-slate-800 font-bold mt-2">
-                A. M. M. Baes, <span class="underline decoration-sky-400 font-black italic">A. J. M. Adoptante</span>, J. C. A. Catilo, P. K. L. Lucero, et al.
+            <p class="text-sm text-slate-700 font-bold mt-2">
+                A. M. M. Baes, <span class="underline decoration-sky-400 font-black italic">Aunhel John M. Adoptante</span>, J. C. A. Catilo, P. K. L. Lucero, J. F. P. Peralta, A. L. P. De Ocampo
             </p>
-            <p class="text-[13px] font-bold italic text-slate-500 mt-1">Int. J. Intell. Syst. Appl. Eng, Vol. 10, No. 1</p>
-            <button onclick="toggleBib('bib_depress')" class="text-[9px] font-black text-slate-400 hover:text-sky-700 mt-3 uppercase tracking-widest flex items-center gap-2">
-                <i class="fa-solid fa-quote-left"></i> BibTeX
-            </button>
-            <pre id="bib_depress" class="hidden mt-4 p-4 bg-slate-50 rounded-xl text-[10px] text-slate-600 overflow-x-auto">@article{baes2022novel,
+            <p class="text-[13px] font-bold italic text-slate-500 mt-1">International Journal of Intelligent Systems and Applications in Engineering, Vol. 10, No. 1 (2022)</p>
+            
+            <div class="flex items-center gap-6 mt-4">
+                <button onclick="toggleBib('bib-depress')" class="text-[9px] font-black text-slate-400 hover:text-sky-700 uppercase tracking-widest flex items-center gap-2">
+                    <i class="fa-solid fa-eye text-xs"></i> View BibTeX
+                </button>
+                <button onclick="copyBib(event, 'bib-depress')" class="text-[9px] font-black text-slate-400 hover:text-emerald-600 uppercase tracking-widest flex items-center gap-2">
+                    <i class="fa-solid fa-copy text-xs"></i> Copy Citation
+                </button>
+            </div>
+
+            <pre id="bib-depress" class="hidden mt-4 p-4 bg-slate-900 text-slate-300 rounded-xl text-[10px] overflow-x-auto border border-slate-800">@article{baes2022novel,
   title={A novel screening tool system for depressive disorders using social media and artificial neural network},
   author={Baes, AMM and Adoptante, AJM and Catilo, JCA and Lucero, PKL and Peralta, JFP and De Ocampo, ALP},
   journal={Int. J. Intell. Syst. Appl. Eng},
@@ -159,29 +212,24 @@
             <h4 class="text-xl font-black text-slate-900 group-hover:text-sky-800 transition leading-snug">
                 INTELLIGENT SYSTEMS AND APPLICATIONS IN ENGINEERING
             </h4>
-            <p class="text-sm text-slate-800 font-bold mt-2">
-                A. M. M. Baes, <span class="underline decoration-sky-400 font-black italic">A. J. M. Adoptante</span>, J. C. A. Catilo, P. K. L. Lucero, et al.
+            <p class="text-sm text-slate-700 font-bold mt-2">
+                A. M. M. Baes, <span class="underline decoration-sky-400 font-black italic">Aunhel John M. Adoptante</span>, J. C. A. Catilo, P. K. L. Lucero, J. F. Peralta, A. L. P. de Ocampo
             </p>
-            <button onclick="toggleBib('bib_baes')" class="text-[9px] font-black text-slate-400 hover:text-sky-700 mt-3 uppercase tracking-widest flex items-center gap-2">
-                <i class="fa-solid fa-quote-left"></i> BibTeX
-            </button>
-            <pre id="bib_baes" class="hidden mt-4 p-4 bg-slate-50 rounded-xl text-[10px] text-slate-600 overflow-x-auto">@article{baesintelligent,
+            
+            <div class="flex items-center gap-6 mt-4">
+                <button onclick="toggleBib('bib-ann')" class="text-[9px] font-black text-slate-400 hover:text-sky-700 uppercase tracking-widest flex items-center gap-2">
+                    <i class="fa-solid fa-eye text-xs"></i> View BibTeX
+                </button>
+                <button onclick="copyBib(event, 'bib-ann')" class="text-[9px] font-black text-slate-400 hover:text-emerald-600 uppercase tracking-widest flex items-center gap-2">
+                    <i class="fa-solid fa-copy text-xs"></i> Copy Citation
+                </button>
+            </div>
+
+            <pre id="bib-ann" class="hidden mt-4 p-4 bg-slate-900 text-slate-300 rounded-xl text-[10px] overflow-x-auto border border-slate-800">@article{baesintelligent,
   title={INTELLIGENT SYSTEMS AND APPLICATIONS IN ENGINEERING},
   author={Baes, Arnie Mae M and Adoptante, Aunhel John M and Catilo, John Carlo A and Lucero, Patrick Kendrex L and Peralta, Janice F and de Ocampo, Anton Louise P}
 }</pre>
         </div>
 
     </div>
-
-    <script>
-        function toggleBib(id) {
-            const e = document.getElementById(id);
-            if (e.classList.contains('hidden')) {
-                e.classList.remove('hidden');
-                e.classList.add('fade-in');
-            } else {
-                e.classList.add('hidden');
-            }
-        }
-    </script>
 </section>
