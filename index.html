@@ -3,53 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV | PSTS Researcher</title>
+    <title>CV | Aunhel John Adoptante (AJ)</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
-        .wide-container { box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1); }
-        .sidebar-border { border-left: 1px solid #f1f5f9; }
-        @media (max-width: 768px) { .sidebar-border { border-left: none; border-top: 1px solid #f1f5f9; } }
-    </style>
-</head>
-<body class="text-slate-900 antialiased p-2 md:p-6">
-
-    <main class="max-w-7xl mx-auto bg-white border border-slate-200 rounded-xl wide-container overflow-hidden">
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f8fafc; 
+            scroll-behavior: smooth;
+        }
         
-        <div id="section-header"></div>
+        /* Modern Wide Container Shadow */
+        .wide-container {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03), 0 0 0 1px rgba(0, 0, 0, 0.05);
+        }
 
-        <div class="grid grid-cols-1 lg:grid-cols-12">
-            <div class="lg:col-span-9 p-8 md:p-12">
-                <div id="section-research"></div>
-                <div id="section-projects" class="mt-16"></div>
-            </div>
+        /* The Professional Timeline Connector */
+        .experience-dot {
+            position: relative;
+        }
+        .experience-dot::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 10px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #0ea5e9; /* Light Blue Accent */
+            border: 2px solid white;
+            box-shadow: 0 0 0 1px #0ea5e9;
+            z-index: 10;
+        }
 
-            <div class="lg:col-span-3 p-8 md:p-12 sidebar-border bg-slate-50/20">
-                <div id="section-sidebar"></div>
-            </div>
-        </div>
-    </main>
+        /* Sidebar vertical divider */
+        .sidebar-border {
+            border-left: 1px solid #f1f5f9;
+        }
 
-    <script>
-        async function loadSection(id, file) {
-            try {
-                const response = await fetch(`sections/${file}`);
-                const content = await response.text();
-                document.getElementById(id).innerHTML = content;
-            } catch (err) {
-                console.error(`Error loading ${file}:`, err);
+        /* Mobile Adjustments */
+        @media (max-width: 1024px) {
+            .sidebar-border { 
+                border-left: none; 
+                border-top: 1px solid #f1f5f9; 
+                margin-top: 2rem; 
+                padding-top: 2rem; 
             }
         }
 
-        // Load all fragments
-        window.onload = () => {
+        /* Subtle Fade-in for loaded content */
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+            opacity: 0;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="text-slate-900 antialiased p-2 md:p-8 lg:p-12">
+
+    <main class="max-w-7xl mx-auto bg-white rounded-2xl wide-container overflow-hidden">
+        
+        <div id="section-header" class="fade-in"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12">
+            
+            <div class="lg:col-span-9 p-8 md:p-12 lg:p-16">
+                
+                <div id="section-research" class="fade-in"></div>
+                
+                <div id="section-publications" class="mt-20 fade-in" style="animation-delay: 0.1s;"></div>
+                
+                <div id="section-projects" class="mt-20 fade-in" style="animation-delay: 0.2s;"></div>
+                
+            </div>
+
+            <aside class="lg:col-span-3 p-8 lg:p-12 sidebar-border bg-slate-50/30">
+                <div id="section-sidebar" class="fade-in" style="animation-delay: 0.3s;"></div>
+            </aside>
+
+        </div>
+    </main>
+
+    <footer class="max-w-7xl mx-auto py-12 flex flex-col md:flex-row justify-between items-center text-slate-400 px-6">
+        <span class="text-[10px] font-bold uppercase tracking-[0.4em]">Aunhel John Adoptante • 2026</span>
+        <div class="flex gap-8 mt-4 md:mt-0">
+            <a href="https://github.com/aunheladoptante" class="hover:text-sky-600 transition text-sm font-bold uppercase tracking-widest">Github</a>
+            <a href="#" class="hover:text-sky-600 transition text-sm font-bold uppercase tracking-widest">Scholar</a>
+        </div>
+    </footer>
+
+    <script>
+        /**
+         * Fetches and injects HTML files into specific containers.
+         * @param {string} id - The ID of the container element.
+         * @param {string} file - The name of the file inside the /sections/ folder.
+         */
+        async function loadSection(id, file) {
+            const container = document.getElementById(id);
+            try {
+                const response = await fetch(`sections/${file}`);
+                if (!response.ok) throw new Error(`Could not fetch ${file}`);
+                const content = await response.text();
+                container.innerHTML = content;
+            } catch (err) {
+                console.error(`Error loading section [${file}]:`, err);
+                container.innerHTML = `<p class="text-red-400 text-xs">Error loading ${file}. Check if file exists in /sections/ folder.</p>`;
+            }
+        }
+
+        // Initialize all sections on page load
+        window.addEventListener('DOMContentLoaded', () => {
             loadSection('section-header', 'header.html');
             loadSection('section-research', 'research.html');
+            loadSection('section-publications', 'publications.html');
             loadSection('section-projects', 'projects.html');
             loadSection('section-sidebar', 'sidebar.html');
-        };
+        });
     </script>
+
 </body>
 </html>
