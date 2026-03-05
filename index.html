@@ -3,132 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PSTS | Research & AI Portfolio</title>
+    <title>CV | Aunhel John Adoptante</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Instrument+Serif&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --hufflepuff: #facc15;
-            --deep-slate: #0f172a;
-        }
         body { 
-            font-family: 'Space+Grotesk', sans-serif; 
-            background-color: var(--deep-slate);
-            color: #f8fafc;
+            font-family: 'Inter', sans-serif; 
+            background-image: url('images/bg.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: #1e293b; 
         }
-        .serif { font-family: 'Instrument Serif', serif; }
-        .bento-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        .wide-container {
+            background-color: rgba(255, 255, 255, 0.5); 
+            backdrop-filter: blur(12px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
         }
-        .bento-card:hover {
-            border-color: var(--hufflepuff);
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.05);
-        }
-        .gradient-bg {
-            background: radial-gradient(circle at top right, rgba(250, 204, 21, 0.1), transparent);
-        }
+        .sidebar-border { border-left: 1px solid #e2e8f0; }
+        @media (max-width: 1024px) { .sidebar-border { border-left: none; border-top: 1px solid #e2e8f0; } }
+        .fade-in { animation: fadeIn 0.8s ease-out forwards; opacity: 0; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body class="gradient-bg min-h-screen">
-
-    <nav class="p-6 max-w-6xl mx-auto flex justify-between items-center">
-        <div class="text-xl font-bold tracking-tighter">PSTS<span class="text-yellow-400">.</span></div>
-        <div class="flex gap-6 text-sm font-medium opacity-70 hover:opacity-100 transition">
-            <a href="#work" class="hover:text-yellow-400">Work</a>
-            <a href="#about" class="hover:text-yellow-400">About</a>
-            <a href="mailto:hello@example.com" class="hover:text-yellow-400">Contact</a>
-        </div>
-    </nav>
-
-    <main class="max-w-6xl mx-auto px-6 py-12">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-            
-            <div class="md:col-span-3 bento-card rounded-3xl p-8 flex flex-col justify-end min-h-[400px]">
-                <div class="inline-flex items-center gap-2 bg-yellow-400/10 text-yellow-400 px-3 py-1 rounded-full text-xs font-bold mb-6 w-fit">
-                    <span class="relative flex h-2 w-2">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
-                        <span class="relative inline-flex rounded-full h-2 w-2 bg-yellow-400"></span>
-                    </span>
-                    AVAILABLE FOR COLLABORATION
-                </div>
-                <h1 class="serif text-6xl md:text-8xl leading-tight mb-4">
-                    Researching the <br><span class="italic text-yellow-400">future of NLP.</span>
-                </h1>
-                <p class="max-w-xl text-slate-400 text-lg">
-                    Project Science Research Specialist at <span class="text-white">DOST-ASTI</span>. 
-                    I fine-tune embedding models for the complexity of Taglish communication.
-                </p>
+<body class="antialiased p-2 md:p-8 lg:p-12">
+    <main class="max-w-7xl mx-auto rounded-3xl wide-container overflow-hidden">
+        <div id="section-header" class="fade-in"></div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12">
+            <div class="lg:col-span-9 p-8 md:p-12 lg:p-16">
+                <div id="section-research" class="fade-in"></div>
+                <div id="section-projects" class="mt-24 fade-in" style="animation-delay: 0.1s;"></div>
+                <div id="section-publications" class="mt-24 fade-in" style="animation-delay: 0.2s;"></div>
             </div>
 
-            <div class="bento-card rounded-3xl p-8 flex flex-col justify-between">
-                <div class="w-16 h-16 bg-yellow-400 rounded-2xl flex items-center justify-center text-slate-900 shadow-lg shadow-yellow-400/20">
-                    <i class="fa-solid fa-microchip text-2xl"></i>
-                </div>
-                <div>
-                    <div class="text-3xl font-bold">3+</div>
-                    <div class="text-sm text-slate-400 uppercase tracking-widest">Years in AI Research</div>
-                </div>
-            </div>
-
-            <div class="bento-card rounded-3xl p-8">
-                <h3 class="text-yellow-400 font-bold mb-2">Technical Focus</h3>
-                <ul class="text-sm space-y-2 text-slate-300">
-                    <li>• Transformers</li>
-                    <li>• Taglish Embeddings</li>
-                    <li>• PyTorch / Python</li>
-                    <li>• LaTeX Workflows</li>
-                </ul>
-            </div>
-
-            <div class="md:col-span-2 bento-card rounded-3xl p-8 flex items-center gap-6 overflow-hidden relative">
-                <div class="flex-1">
-                    <h3 class="font-bold text-lg mb-1">Beyond the Lab</h3>
-                    <p class="text-sm text-slate-400">Hufflepuff by nature, Pickleballer by weekend, and a proud P-Pop enthusiast.</p>
-                </div>
-                <div class="flex -space-x-4">
-                    <div class="w-12 h-12 rounded-full border-2 border-slate-900 bg-blue-500 flex items-center justify-center"><i class="fa-solid fa-volleyball"></i></div>
-                    <div class="w-12 h-12 rounded-full border-2 border-slate-900 bg-yellow-500 flex items-center justify-center text-slate-900 font-bold text-xs">HP</div>
-                </div>
-            </div>
-
-            <div class="md:col-span-2 bento-card rounded-3xl p-8 group cursor-pointer">
-                <div class="flex justify-between items-start mb-12">
-                    <span class="text-xs font-mono text-slate-500">PROJECT_01</span>
-                    <i class="fa-solid fa-arrow-up-right-from-square group-hover:text-yellow-400 transition"></i>
-                </div>
-                <h2 class="text-2xl font-bold mb-2">Taglish Embedding Fine-tuning</h2>
-                <p class="text-slate-400 text-sm">Optimizing semantic representation for code-switched Filipino-English datasets.</p>
-            </div>
-
-            <div class="md:col-span-2 bento-card rounded-3xl p-8 group cursor-pointer">
-                <div class="flex justify-between items-start mb-12">
-                    <span class="text-xs font-mono text-slate-500">SOCIAL_IMPACT</span>
-                    <i class="fa-solid fa-heart group-hover:text-pink-500 transition"></i>
-                </div>
-                <h2 class="text-2xl font-bold mb-2">Project: Polaris</h2>
-                <p class="text-slate-400 text-sm">A fundraising initiative merging design and logistics to support medical expenses.</p>
-            </div>
-
-            <div class="md:col-span-2 bg-yellow-400 rounded-3xl p-8 text-slate-900 flex flex-col justify-between group cursor-pointer hover:bg-yellow-300 transition">
-                <h2 class="serif text-4xl font-bold">Let's build <br>something impactful.</h2>
-                <div class="flex justify-between items-center mt-8">
-                    <span class="font-bold">Get in touch</span>
-                    <i class="fa-solid fa-paper-plane"></i>
-                </div>
-            </div>
-
+            <aside class="lg:col-span-3 p-8 lg:p-12 sidebar-border bg-slate-50/20">
+                <div id="section-sidebar" class="fade-in" style="animation-delay: 0.3s;"></div>
+            </aside>
         </div>
     </main>
 
-    <footer class="max-w-6xl mx-auto px-6 py-12 flex justify-between text-xs text-slate-500 uppercase tracking-widest">
-        <div>© 2026 RESEARCH PORTFOLIO</div>
-        <div>BUILT WITH PRECISION & HEART</div>
+    <footer class="max-w-7xl mx-auto py-12 flex justify-between items-center px-6 text-slate-700 font-bold text-[10px] uppercase tracking-[0.4em]">
+        <span>Aunhel John Adoptante • 2026</span>
+        <div class="flex gap-8">
+            <a href="https://github.com/aunheladoptante" target="_blank">Github</a>
+            <a href="https://scholar.google.com/citations?user=s8GNZhEAAAAJ" target="_blank">Scholar</a>
+        </div>
     </footer>
 
+    <script>
+        async function loadSection(id, file) {
+            try {
+                const response = await fetch(`sections/${file}`);
+                const content = await response.text();
+                document.getElementById(id).innerHTML = content;
+            } catch (err) { console.error(`Error loading ${file}`, err); }
+        }
+        window.addEventListener('DOMContentLoaded', () => {
+            loadSection('section-header', 'header.html');
+            loadSection('section-research', 'research.html');
+            loadSection('section-projects', 'projects.html');
+            loadSection('section-publications', 'publications.html');
+            loadSection('section-sidebar', 'sidebar.html');
+        });
+
+        // Toggle Visibility
+        function toggleBib(id) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.classList.toggle('hidden');
+            if (!el.classList.contains('hidden')) el.classList.add('fade-in');
+        }
+
+        // Copy to Clipboard with Feedback
+        async function copyBib(event, id) {
+            const text = document.getElementById(id).innerText;
+            const btn = event.currentTarget;
+            const originalHTML = btn.innerHTML;
+
+            try {
+                await navigator.clipboard.writeText(text);
+                // Visual Feedback
+                btn.innerHTML = '<i class="fa-solid fa-check text-emerald-500"></i> <span class="text-emerald-600">Copied!</span>';
+                btn.classList.add('scale-105');
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalHTML;
+                    btn.classList.remove('scale-105');
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy:', err);
+            }
+        }
+
+        async function loadSection(id, file) {
+            try {
+                const response = await fetch(`sections/${file}`);
+                const content = await response.text();
+                document.getElementById(id).innerHTML = content;
+            } catch (err) { console.error(`Error loading ${file}`, err); }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            ['header', 'research', 'projects', 'publications', 'sidebar'].forEach(s => 
+                loadSection(`section-${s}`, `${s}.html`)
+            );
+        });
+    </script>
 </body>
 </html>
