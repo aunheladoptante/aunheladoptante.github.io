@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Researcher & Developer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 leading-relaxed">
+
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <span class="font-bold text-xl tracking-tight">Portfolio</span>
+            <div class="space-x-8 text-sm font-medium">
+                <a href="#about" class="hover:text-blue-600 transition">About</a>
+                <a href="#projects" class="hover:text-blue-600 transition">Projects</a>
+                <a href="#resume" class="hover:text-blue-600 transition">Resume</a>
+                <a href="mailto:your.email@example.com" class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="about" class="max-w-5xl mx-auto px-6 py-24 text-center md:text-left">
+        <div class="md:flex items-center gap-12">
+            <div class="flex-1">
+                <h1 class="text-5xl md:text-6xl font-extrabold mb-6">
+                    Hi, I'm <span class="gradient-text">PSTS Researcher</span>
+                </h1>
+                <p class="text-xl text-slate-600 mb-8 max-w-2xl">
+                    I bridge the gap between AI research and real-world deployment at <strong>DOST-ASTI</strong>. Currently specializing in NLP and fine-tuning embedding models for <strong>Taglish</strong> text.
+                </p>
+                <div class="flex gap-4 justify-center md:justify-start">
+                    <a href="#projects" class="bg-slate-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-slate-800 transition">View Projects</a>
+                    <a href="https://github.com" target="_blank" class="border border-slate-300 px-6 py-3 rounded-lg font-semibold hover:bg-slate-100 transition">GitHub</a>
+                </div>
+            </div>
+            <div class="hidden md:block w-64 h-64 bg-slate-200 rounded-2xl rotate-3 flex items-center justify-center text-slate-400 border-4 border-white shadow-xl">
+                <i class="fa-solid fa-user text-6xl"></i>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="bg-white py-24">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 flex items-center gap-3">
+                <span class="w-8 h-1 bg-blue-600 inline-block"></span> Selected Work
+            </h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="group p-6 rounded-2xl border border-slate-200 hover:border-blue-400 hover:shadow-lg transition">
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-blue-600 transition">Taglish NLP Embedding Models</h3>
+                    <p class="text-slate-600 mb-4 text-sm">Fine-tuning state-of-the-art embedding models to handle the nuances of code-switched Tagalog-English text for better semantic search and classification.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-full">NLP</span>
+                        <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-full">Python</span>
+                        <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-full">Transformers</span>
+                    </div>
+                    <a href="#" class="text-sm font-bold flex items-center gap-1 group-hover:gap-2 transition-all">Details <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <div class="group p-6 rounded-2xl border border-slate-200 hover:border-emerald-400 hover:shadow-lg transition">
+                    <h3 class="text-xl font-bold mb-2 group-hover:text-emerald-600 transition">Project: Polaris</h3>
+                    <p class="text-slate-600 mb-4 text-sm">Organized and managed a community fundraiser involving design, inventory management, and promotional outreach to support medical initiatives.</p>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-semibold rounded-full">Operations</span>
+                        <span class="px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-semibold rounded-full">Design</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="resume" class="max-w-5xl mx-auto px-6 py-24">
+        <div class="bg-slate-900 rounded-3xl p-8 md:p-12 text-white flex flex-col md:row justify-between items-center gap-8">
+            <div>
+                <h2 class="text-3xl font-bold mb-4">Professional Background</h2>
+                <p class="text-slate-400">Looking for my full technical CV or publication list?</p>
+            </div>
+            <a href="#" class="bg-white text-slate-900 px-8 py-4 rounded-xl font-bold hover:bg-blue-50 transition shadow-lg">Download Resume</a>
+        </div>
+    </section>
+
+    <footer class="py-12 border-t border-slate-200 text-center text-slate-500 text-sm">
+        <p>&copy; 2026 • Built with Tailwind CSS & GitHub Pages</p>
+    </footer>
+
+</body>
+</html>
