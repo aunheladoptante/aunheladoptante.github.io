@@ -12,19 +12,24 @@
     <style>
         body { 
             font-family: 'Inter', sans-serif; 
-            background-color: #f8fafc; 
-            scroll-behavior: smooth;
+            background-image: url('images/bg.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            /* Darker base text for global readability */
+            color: #1e293b; /* Slate-800 */
         }
         
-        /* Modern Wide Container Shadow */
         .wide-container {
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03), 0 0 0 1px rgba(0, 0, 0, 0.05);
+            background-color: rgba(255, 255, 255, 0.5); /* Increased opacity for text contrast */
+            backdrop-filter: blur(12px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.4);
         }
+        
 
-        /* The Professional Timeline Connector */
-        .experience-dot {
-            position: relative;
-        }
+        .experience-dot { position: relative; }
         .experience-dot::before {
             content: '';
             position: absolute;
@@ -33,77 +38,57 @@
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            background: #0ea5e9; /* Light Blue Accent */
+            background: #0ea5e9;
             border: 2px solid white;
             box-shadow: 0 0 0 1px #0ea5e9;
             z-index: 10;
         }
 
-        /* Sidebar vertical divider */
-        .sidebar-border {
-            border-left: 1px solid #f1f5f9;
-        }
+        .sidebar-border { border-left: 1px solid #f1f5f9; }
 
-        /* Mobile Adjustments */
         @media (max-width: 1024px) {
-            .sidebar-border { 
-                border-left: none; 
-                border-top: 1px solid #f1f5f9; 
-                margin-top: 2rem; 
-                padding-top: 2rem; 
-            }
+            .sidebar-border { border-left: none; border-top: 1px solid #f1f5f9; margin-top: 2rem; padding-top: 2rem; }
         }
 
-        /* Subtle Fade-in for loaded content */
         .fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
+            animation: fadeIn 0.8s ease-out forwards;
             opacity: 0;
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        /* Footer text darkened for readability on the light blue background */
+        footer span, footer a { color: #334155; } /* Slate-700 */
     </style>
 </head>
 <body class="text-slate-900 antialiased p-2 md:p-8 lg:p-12">
 
-    <main class="max-w-7xl mx-auto bg-white rounded-2xl wide-container overflow-hidden">
-        
+    <main class="max-w-7xl mx-auto rounded-2xl wide-container overflow-hidden">
         <div id="section-header" class="fade-in"></div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12">
-            
             <div class="lg:col-span-9 p-8 md:p-12 lg:p-16">
-                
                 <div id="section-research" class="fade-in"></div>
-                
                 <div id="section-publications" class="mt-20 fade-in" style="animation-delay: 0.1s;"></div>
-                
                 <div id="section-projects" class="mt-20 fade-in" style="animation-delay: 0.2s;"></div>
-                
             </div>
 
-            <aside class="lg:col-span-3 p-8 lg:p-12 sidebar-border bg-slate-50/30">
+            <aside class="lg:col-span-3 p-8 lg:p-12 sidebar-border">
                 <div id="section-sidebar" class="fade-in" style="animation-delay: 0.3s;"></div>
             </aside>
-
         </div>
     </main>
 
-    <footer class="max-w-7xl mx-auto py-12 flex flex-col md:flex-row justify-between items-center text-slate-400 px-6">
+    <footer class="max-w-7xl mx-auto py-12 flex flex-col md:flex-row justify-between items-center text-slate-500 px-6">
         <span class="text-[10px] font-bold uppercase tracking-[0.4em]">Aunhel John Adoptante • 2026</span>
         <div class="flex gap-8 mt-4 md:mt-0">
-            <a href="https://github.com/aunheladoptante" class="hover:text-sky-600 transition text-sm font-bold uppercase tracking-widest">Github</a>
-            <a href="#" class="hover:text-sky-600 transition text-sm font-bold uppercase tracking-widest">Scholar</a>
+            <a href="https://github.com/aunheladoptante" target="_blank" class="hover:text-sky-600 transition text-sm font-bold uppercase tracking-widest">Github</a>
+            <a href="https://scholar.google.com/citations?user=s8GNZhEAAAAJ" target="_blank" class="hover:text-sky-600 transition text-sm font-bold uppercase tracking-widest">Scholar</a>
         </div>
     </footer>
 
     <script>
-        /**
-         * Fetches and injects HTML files into specific containers.
-         * @param {string} id - The ID of the container element.
-         * @param {string} file - The name of the file inside the /sections/ folder.
-         */
         async function loadSection(id, file) {
             const container = document.getElementById(id);
             try {
@@ -113,11 +98,10 @@
                 container.innerHTML = content;
             } catch (err) {
                 console.error(`Error loading section [${file}]:`, err);
-                container.innerHTML = `<p class="text-red-400 text-xs">Error loading ${file}. Check if file exists in /sections/ folder.</p>`;
+                container.innerHTML = `<p class="text-red-400 text-xs">Error loading ${file}. Check your /sections/ folder.</p>`;
             }
         }
 
-        // Initialize all sections on page load
         window.addEventListener('DOMContentLoaded', () => {
             loadSection('section-header', 'header.html');
             loadSection('section-research', 'research.html');
@@ -126,6 +110,5 @@
             loadSection('section-sidebar', 'sidebar.html');
         });
     </script>
-
 </body>
 </html>
