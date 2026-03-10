@@ -1,13 +1,202 @@
-<section>
-    <div class="flex items-center gap-4 mb-12"><h3 class="text-[11px] font-black text-slate-400 uppercase tracking-[0.3em] whitespace-nowrap">Selected Initiatives</h3><div class="w-full h-[1px] bg-slate-100"></div></div>
-    <div class="grid md:grid-cols-2 gap-8">
-        <div class="p-8 bg-slate-50/50 border border-slate-100 rounded-3xl">
-            <h4 class="text-xl font-black text-slate-900 mb-2">Project: Polaris</h4>
-            <p class="text-[13px] text-slate-700 font-medium">Orchestrated a community-driven fundraiser managing design, logistics, and medical support initiatives.</p>
+<section class="py-12">
+    <div class="flex items-center gap-6 mb-16 px-2">
+        <h3 class="text-[16px] md:text-[20px] font-black text-slate-900 uppercase tracking-[0.5em] whitespace-nowrap">
+            <span class="text-sky-600 mr-2">Passion and Purpose
+        </h3>
+        <div class="w-full h-[2px] bg-slate-100"></div>
+    </div>
+
+    <style>
+        .carousel-viewport { overflow: hidden; position: relative; padding: 40px 0; margin: -40px 0; }
+        .carousel-track { display: flex; gap: 32px; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform; }
+        
+        /* Card Style */
+        .project-card {
+            flex-shrink: 0; border-radius: 48px; padding: 2.5rem; height: 380px; width: 340px;
+            display: flex; flex-direction: column; background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px); border: 2px solid #ffffff;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.03);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative; overflow: hidden; cursor: pointer;
+        }
+        .project-card:hover { transform: translateY(-12px); box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.08); }
+        
+        .aura { position: absolute; width: 180px; height: 180px; border-radius: 50%; filter: blur(60px); z-index: 0; opacity: 0.3; top: -30px; right: -30px; }
+        .icon-pod { width: 60px; height: 60px; border-radius: 24px; display: flex; align-items: center; justify-content: center; background: white; box-shadow: 0 8px 16px rgba(0,0,0,0.05); margin-bottom: 2rem; position: relative; z-index: 10; }
+
+        /* Modal Styles */
+        #projectModal { 
+            position: fixed; inset: 0; z-index: 9999; display: none; 
+            align-items: center; justify-content: center; padding: 20px;
+            background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(12px);
+        }
+        .modal-container { 
+            background: white; width: 100%; max-width: 850px; border-radius: 40px; 
+            overflow: hidden; box-shadow: 0 50px 100px -20px rgba(0,0,0,0.2);
+            animation: modalPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes modalPop { from { opacity: 0; transform: scale(0.9) translateY(20px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+        
+        .carousel-btn {
+            width: 60px; height: 60px; border-radius: 50%; background: white;
+            display: flex; align-items: center; justify-content: center; cursor: pointer;
+            transition: all 0.4s ease; color: #1e293b; border: 2px solid #f8fafc;
+        }
+        .carousel-btn:hover:not(:disabled) { border-color: #38bdf8; color: #38bdf8; box-shadow: 0 10px 20px rgba(56, 189, 248, 0.1); }
+    </style>
+
+    <div class="relative">
+        <div class="carousel-viewport" id="carouselViewport">
+            <div class="carousel-track" id="carouselTrack">
+
+                <div class="project-card" onclick="openModal('volunteer')">
+                    <div class="aura bg-emerald-300"></div>
+                    <div class="icon-pod"><i class="fa-solid fa-hands-holding-circle text-emerald-400 text-2xl"></i></div>
+                    <h4 class="text-2xl font-black text-slate-900 tracking-tighter">Volunteerism</h4>
+                    <p class="text-slate-500 text-[14px] leading-relaxed mt-4 font-medium">Community initiatives focusing on tech representation and local social impact.</p>
+                    <span class="mt-auto inline-block text-[10px] font-black text-emerald-600 uppercase tracking-widest">Community Impact</span>
+                </div>
+
+                <div class="project-card" onclick="openModal('mentorship')">
+                    <div class="aura bg-indigo-300"></div>
+                    <div class="icon-pod"><i class="fa-solid fa-user-graduate text-indigo-400 text-2xl"></i></div>
+                    <h4 class="text-2xl font-black text-slate-900 tracking-tighter">Mentorship</h4>
+                    <p class="text-slate-500 text-[14px] leading-relaxed mt-4 font-medium">Guiding the next generation of Filipino researchers in AI and NLP.</p>
+                    <span class="mt-auto inline-block text-[10px] font-black text-indigo-600 uppercase tracking-widest">Technical Guidance</span>
+                </div>
+
+                <div class="project-card" onclick="openModal('walo')">
+                    <div class="aura bg-sky-400"></div>
+                    <div class="icon-pod"><i class="fa-solid fa-sparkles text-sky-400 text-2xl"></i></div>
+                    <h4 class="text-2xl font-black text-slate-900 tracking-tighter">WALO</h4>
+                    <p class="text-slate-500 text-[14px] leading-relaxed mt-4 font-medium">A creative visual archive for BINI, featuring "Eras Tour" style poster concepts.</p>
+                    <span class="mt-auto inline-block text-[10px] font-black text-sky-500 uppercase tracking-widest">View Designs</span>
+                </div>
+
+                <div class="project-card" onclick="openModal('polaris')">
+                    <div class="aura bg-amber-300"></div>
+                    <div class="icon-pod"><i class="fa-solid fa-star text-amber-400 text-2xl"></i></div>
+                    <h4 class="text-2xl font-black text-slate-900 tracking-tighter">Project: Polaris</h4>
+                    <p class="text-slate-500 text-[14px] leading-relaxed mt-4 font-medium">Advocacy through apparel to support medical funding and cancer treatment.</p>
+                    <span class="mt-auto inline-block text-[10px] font-black text-amber-500 uppercase tracking-widest">Mission & Fundraiser</span>
+                </div>
+
+                <div class="project-card" onclick="openModal('heart')">
+                    <div class="aura bg-rose-300"></div>
+                    <div class="icon-pod"><i class="fa-solid fa-heart text-rose-400 text-2xl"></i></div>
+                    <h4 class="text-2xl font-black text-slate-900 tracking-tighter">Heart and Sole</h4>
+                    <p class="text-slate-500 text-[14px] leading-relaxed mt-4 font-medium">A virtual run event promoting health awareness and collective social action.</p>
+                    <span class="mt-auto inline-block text-[10px] font-black text-rose-500 uppercase tracking-widest">Event Strategy</span>
+                </div>
+
+            </div>
         </div>
-        <div class="p-8 bg-slate-50/50 border border-slate-100 rounded-3xl">
-            <h4 class="text-xl font-black text-slate-900 mb-2">Heart & Sole Run</h4>
-            <p class="text-[13px] text-slate-700 font-medium">Led branding and registration strategy for a virtual charity run supporting cancer treatment.</p>
+
+        <div class="flex gap-4 mt-10 justify-center">
+            <button class="carousel-btn" id="btnPrev" onclick="carouselScroll(-1)" disabled><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="carousel-btn" id="btnNext" onclick="carouselScroll(1)"><i class="fa-solid fa-chevron-right"></i></button>
         </div>
     </div>
+
+    <div id="projectModal" onclick="closeModal()">
+        <div class="modal-container" onclick="event.stopPropagation()">
+            <div class="flex flex-col md:flex-row h-full max-h-[85vh] overflow-y-auto">
+                <div class="w-full md:w-1/2 bg-slate-50 flex items-center justify-center p-6">
+                    <img id="modalImg" src="images/bg.png" class="w-full h-auto rounded-3xl shadow-xl">
+                </div>
+                <div class="w-full md:w-1/2 p-10 flex flex-col">
+                    <div class="flex justify-between items-start mb-6">
+                        <div id="modalBadge" class="px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest"></div>
+                        <button onclick="closeModal()" class="text-slate-300 hover:text-slate-900"><i class="fa-solid fa-xmark text-2xl"></i></button>
+                    </div>
+                    <h2 id="modalTitle" class="text-4xl font-black text-slate-900 tracking-tighter mb-4"></h2>
+                    <p id="modalDesc" class="text-slate-500 text-[15px] leading-relaxed mb-8 font-medium"></p>
+                    <div class="mt-auto pt-8 border-t border-slate-100">
+                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] block mb-2">Impact Highlight</span>
+                        <p id="modalImpact" class="text-[14px] font-bold text-slate-800"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const projectData = {
+            volunteer: {
+                title: "Volunteerism",
+                badge: "Community Impact",
+                badgeColor: "bg-emerald-50 text-emerald-600",
+                desc: "Focused on community-led initiatives and leveraging scientific research skills for social impact. My advocacy involves ensuring strong Filipino representation in global tech spaces while supporting local grassroots movements.",
+                impact: "Advocacy for Filipino Tech Representation",
+                img: "images/photo.jpeg"
+            },
+            mentorship: {
+                title: "Mentorship",
+                badge: "Technical Leadership",
+                badgeColor: "bg-indigo-50 text-indigo-600",
+                desc: "In my capacity as an AI Technical Co-lead at DOST-ASTI, I supervise research teams and direct the technical strategy for advanced NLP systems. I prioritize guiding emerging talent in mastering RAG and semantic parsing methodologies.",
+                impact: "Building Research Capacity in the Philippines",
+                img: "images/photo.jpeg"
+            },
+            walo: {
+                title: "WALO",
+                badge: "Creative Concept",
+                badgeColor: "bg-sky-50 text-sky-500",
+                desc: "A creative project exploring the discography of the Filipino girl group BINI. This archive features high-fidelity visual concepts, including a custom 'Eras Tour' style poster design for each of the eight members.",
+                impact: "Pop Culture Visual Branding",
+                img: "images/bg.png"
+            },
+            polaris: {
+                title: "Project: Polaris",
+                badge: "Fundraising & Advocacy",
+                badgeColor: "bg-amber-50 text-amber-500",
+                desc: "A dedicated fundraiser to help cover medical costs for cervical cancer treatment. This initiative involves selling t-shirts featuring unique designs based on my mother's life mantras.",
+                impact: "Medical Support for Cervical Cancer Advocacy",
+                img: "images/bg.png"
+            },
+            heart: {
+                title: "Heart and Sole",
+                badge: "Virtual Event",
+                badgeColor: "bg-rose-50 text-rose-500",
+                desc: "A Mother's Day virtual run event titled 'Heart and Sole'. A portion of the proceeds from the run is donated to help families undergoing cervical cancer treatment.",
+                impact: "Health Awareness & Financial Support",
+                img: "images/bg.png"
+            }
+        };
+
+        function openModal(id) {
+            const data = projectData[id];
+            document.getElementById('modalTitle').innerText = data.title;
+            document.getElementById('modalBadge').innerText = data.badge;
+            document.getElementById('modalBadge').className = `px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest ${data.badgeColor}`;
+            document.getElementById('modalDesc').innerText = data.desc;
+            document.getElementById('modalImpact').innerText = data.impact;
+            document.getElementById('modalImg').src = data.img;
+            document.getElementById('projectModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('projectModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        (function () {
+            const track = document.getElementById('carouselTrack');
+            const viewport = document.getElementById('carouselViewport');
+            const btnPrev = document.getElementById('btnPrev');
+            const btnNext = document.getElementById('btnNext');
+            const GAP = 32;
+            let position = 0;
+            function getStepSize() { const card = track.children[0]; return card ? card.offsetWidth + GAP : 372; }
+            function maxScroll() { return track.scrollWidth - viewport.offsetWidth; }
+            window.carouselScroll = function (dir) {
+                const step = getStepSize();
+                position = Math.max(0, Math.min(position + dir * step, maxScroll()));
+                track.style.transform = `translateX(-${position}px)`;
+                btnPrev.disabled = position <= 0;
+                btnNext.disabled = position >= maxScroll();
+            };
+        })();
+    </script>
 </section>
