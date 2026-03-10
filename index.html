@@ -53,7 +53,17 @@
             try {
                 const response = await fetch(`sections/${file}`);
                 const content = await response.text();
-                document.getElementById(id).innerHTML = content;
+                const container = document.getElementById(id);
+                container.innerHTML = content;
+
+                // Manually execute scripts found in the injected HTML
+                const scripts = container.querySelectorAll('script');
+                scripts.forEach(oldScript => {
+                    const newScript = document.createElement('script');
+                    Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+                    newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+                    oldScript.parentNode.replaceChild(newScript, oldScript);
+                });
             } catch (err) { console.error(`Error loading ${file}`, err); }
         }
 
