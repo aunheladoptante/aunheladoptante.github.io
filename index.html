@@ -14,93 +14,103 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            background-repeat: no-repeat;
-            color: #1e293b; 
+            color: #0f172a;
         }
-        .wide-container {
-            background-color: rgba(255, 255, 255, 0.5); 
-            backdrop-filter: blur(12px);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-        }
-        .fade-in { animation: fadeIn 0.8s ease-out forwards; opacity: 0; }
+        .sidebar-clear { background: rgba(255, 255, 255, 0.12); backdrop-filter: blur(20px) saturate(160%); border-right: 0.5px solid rgba(255, 255, 255, 0.2); }
+        .content-card-clear { background: rgba(255, 255, 255, 0.22); backdrop-filter: blur(30px) saturate(150%); border: 1px solid rgba(255, 255, 255, 0.3); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03); }
+        .nav-pill-container { background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.4); padding: 8px; border-radius: 9999px; display: inline-flex; gap: 12px; }
+        .nav-link { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); color: #1e293b; letter-spacing: 0.35em; padding: 12px 28px; border-radius: 9999px; font-size: 11px; font-weight: 900; text-transform: uppercase; }
+        .nav-link.active { color: #ffffff; background: #0369a1; box-shadow: 0 4px 15px rgba(3, 105, 161, 0.4); }
+        .fade-in { animation: fadeIn 0.6s ease-out forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Carousel Specific Styles */
+        .carousel-view { position: relative; width: 100%; height: 100%; overflow: hidden; }
+        .carousel-track { display: flex; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); height: 100%; width: 100%; }
+        .nav-arrow {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.3); backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4); color: #0f172a;
+            width: 36px; height: 36px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; opacity: 0; transition: all 0.3s ease; z-index: 50;
+        }
+        .group:hover .nav-arrow { opacity: 1; }
+        .nav-arrow:hover { background: white; transform: translateY(-50%) scale(1.1); }
     </style>
 </head>
-<body class="antialiased p-2 md:p-8 lg:p-12">
-    <main class="max-w-7xl mx-auto rounded-3xl wide-container overflow-hidden">
-        <div id="section-header" class="fade-in"></div>
-        
-        <div class="p-8 md:p-12 lg:p-16 max-w-5xl mx-auto">
-            <div id="section-research" class="fade-in" style="animation-delay: 0.1s;"></div>
-            
-            <div id="section-projects" class="mt-16 fade-in" style="animation-delay: 0.2s;"></div>
-            
-            <div id="section-publications" class="mt-16 fade-in" style="animation-delay: 0.3s;"></div>
-        </div>
-    </main>
-
-    <footer class="max-w-7xl mx-auto py-12 flex justify-between items-center px-6 text-slate-700 font-bold text-[10px] uppercase tracking-[0.4em]">
-        <span>Aunhel John Adoptante • 2026</span>
-        <div class="flex gap-8">
-            <a href="https://github.com/aunheladoptante" target="_blank">Github</a>
-            <a href="https://scholar.google.com/citations?user=s8GNZhEAAAAJ" target="_blank">Scholar</a>
-        </div>
-    </footer>
+<body class="antialiased">
+    <div class="flex flex-col lg:flex-row min-h-screen items-start">
+        <aside id="section-header" class="w-full lg:w-[500px] sticky top-0 sidebar-clear px-8 py-12 min-h-screen flex flex-col items-center"></aside>
+        <main class="flex-1 flex flex-col min-h-screen w-full">
+            <div class="sticky top-0 z-30 p-10 flex justify-center">
+                <nav class="nav-pill-container">
+                    <button onclick="switchTab('professional')" id="btn-professional" class="nav-link active">Professional</button>
+                    <button onclick="switchTab('passion')" id="btn-passion" class="nav-link">Passion</button>
+                    <button onclick="switchTab('lifestyle')" id="btn-lifestyle" class="nav-link">Lifestyle</button>
+                </nav>
+            </div>
+            <div class="p-6 lg:p-14 lg:pt-0">
+                <div id="tab-content" class="content-card-clear rounded-[3rem] p-10 md:p-16 max-w-5xl mx-auto fade-in"></div>
+            </div>
+            <footer class="mt-auto p-12 text-center text-slate-500 font-bold text-[9px] uppercase tracking-[0.5em]">
+                Aunhel John Adoptante • 2026
+            </footer>
+        </main>
+    </div>
 
     <script>
-        async function loadSection(id, file) {
+        const carouselStates = {};
+
+        async function hydrateCarousels() {
+            try {
+                const response = await fetch('data/gallery.json');
+                const data = await response.json();
+                document.querySelectorAll('.carousel-track').forEach(track => {
+                    const id = track.id.replace('track-', '');
+                    const images = data[id];
+                    if (images) {
+                        track.innerHTML = images.map(src => `
+                            <div class="flex-shrink-0 w-full h-full">
+                                <img src="${src}" class="w-full h-full object-cover">
+                            </div>
+                        `).join('');
+                        carouselStates[id] = 0;
+                        track.style.transform = `translateX(0%)`;
+                    }
+                });
+            } catch (err) { console.error("Gallery initialization error:", err); }
+        }
+
+        window.moveSlide = function(id, dir) {
+            const track = document.getElementById(`track-${id}`);
+            if (!track) return;
+            const slides = track.children.length;
+            carouselStates[id] = (carouselStates[id] + dir + slides) % slides;
+            track.style.transform = `translateX(-${carouselStates[id] * 100}%)`;
+        };
+
+        async function loadSection(file, containerId = 'tab-content') {
             try {
                 const response = await fetch(`sections/${file}`);
                 const content = await response.text();
-                const container = document.getElementById(id);
+                const container = document.getElementById(containerId);
                 container.innerHTML = content;
+                if (containerId === 'tab-content') await hydrateCarousels();
+            } catch (err) { console.error("Section load error:", err); }
+        }
 
-                // Manually execute scripts found in the injected HTML
-                const scripts = container.querySelectorAll('script');
-                scripts.forEach(oldScript => {
-                    const newScript = document.createElement('script');
-                    Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
-                    newScript.appendChild(document.createTextNode(oldScript.innerHTML));
-                    oldScript.parentNode.replaceChild(newScript, oldScript);
-                });
-            } catch (err) { console.error(`Error loading ${file}`, err); }
+        function switchTab(tabName) {
+            document.querySelectorAll('.nav-link').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`btn-${tabName}`).classList.add('active');
+            loadSection(`${tabName}.html`);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         window.addEventListener('DOMContentLoaded', () => {
-            // Loading header, research, projects, and publications
-            ['header', 'research', 'projects', 'publications'].forEach(s => 
-                loadSection(`section-${s}`, `${s}.html`)
-            );
+            loadSection('header.html', 'section-header');
+            switchTab('professional');
         });
-
-        // Toggle Visibility for BibTeX
-        function toggleBib(id) {
-            const el = document.getElementById(id);
-            if (!el) return;
-            el.classList.toggle('hidden');
-            if (!el.classList.contains('hidden')) el.classList.add('fade-in');
-        }
-
-        // Copy Citation to Clipboard
-        async function copyBib(event, id) {
-            const text = document.getElementById(id).innerText;
-            const btn = event.currentTarget;
-            const originalHTML = btn.innerHTML;
-
-            try {
-                await navigator.clipboard.writeText(text);
-                btn.innerHTML = '<i class="fa-solid fa-check text-emerald-500"></i> <span class="text-emerald-600">Copied!</span>';
-                btn.classList.add('scale-105');
-                
-                setTimeout(() => {
-                    btn.innerHTML = originalHTML;
-                    btn.classList.remove('scale-105');
-                }, 2000);
-            } catch (err) {
-                console.error('Failed to copy:', err);
-            }
-        }
     </script>
 </body>
 </html>

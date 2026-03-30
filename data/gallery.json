@@ -1,0 +1,49 @@
+{
+  "walo-main": [
+    "sample/landscape-1.jpg",
+    "sample/landscape-2.jpg",
+    "sample/landscape-3.jpg"
+  ],
+  "walo-subs": [
+    "sample/square-1.jpg",
+    "sample/square-2.jpg"
+  ],
+  "pokemon": [
+    "sample/square-3.jpg",
+    "sample/square-1.jpg"
+  ],
+  "pokemon-main": [
+    "sample/landscape-2.jpg",
+    "sample/landscape-3.jpg"
+  ],
+  "pickleball": [
+    "sample/square-1.jpg",
+    "sample/square-2.jpg",
+    "sample/square-3.jpg"
+  ],
+  "badminton": [
+    "sample/square-2.jpg",
+    "sample/square-3.jpg"
+  ],
+  "polaris": [
+    "sample/landscape-3.jpg",
+    "sample/landscape-1.jpg",
+    "sample/square-1.jpg"
+  ],
+  "heart-sole": [
+    "sample/landscape-1.jpg",
+    "sample/landscape-2.jpg"
+  ],
+  "outreach": [
+    "sample/landscape-2.jpg",
+    "sample/square-2.jpg"
+  ],
+  "advocacy": [
+    "sample/landscape-3.jpg",
+    "sample/landscape-1.jpg"
+  ],
+  "concerts": [
+    "sample/square-3.jpg",
+    "sample/landscape-2.jpg"
+  ]
+}

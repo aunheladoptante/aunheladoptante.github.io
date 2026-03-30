@@ -1,0 +1,86 @@
+<section class="space-y-32">
+    <div class="grid lg:grid-cols-12 gap-12 items-start">
+        <div class="lg:col-span-4 sticky top-24">
+            <h3 class="text-[10px] font-black text-rose-600 uppercase tracking-[0.5em] mb-4">01 / Passion</h3>
+            <h4 class="text-3xl font-black italic tracking-tighter text-slate-900 leading-none">Fandom & Collections</h4>
+            <p class="mt-6 text-[13px] text-slate-500 font-medium leading-relaxed">
+                Just a dedicated Bloom and Once documenting the journey through digital archives, photocard hunting, and live shows.
+            </p>
+        </div>
+        
+        <div class="lg:col-span-8 space-y-24">
+            <div class="group relative aspect-[16/9] rounded-[2.5rem] overflow-hidden border-[0.5px] border-white/40 shadow-2xl bg-white/10">
+                <button onclick="moveSlide('walo-main', -1)" class="nav-arrow left-4"><i class="fa-solid fa-chevron-left"></i></button>
+                <button onclick="moveSlide('walo-main', 1)" class="nav-arrow right-4"><i class="fa-solid fa-chevron-right"></i></button>
+                <div class="carousel-view"><div id="track-walo-main" class="carousel-track"></div></div>
+                <div class="absolute inset-0 pointer-events-none bg-gradient-to-t from-slate-950/40 to-transparent"></div>
+                <p class="absolute bottom-6 left-8 text-white text-[10px] font-black uppercase tracking-[0.3em]">Project: WALO Archives</p>
+            </div>
+            <div class="mt-8 px-2">
+                <h5 class="text-xl font-black text-slate-900 italic">The BINI Archive</h5>
+                <p class="text-[14px] text-slate-600 mt-2 leading-relaxed">
+                    I built WALO to be the ultimate digital library for BINI. It's all about keeping their history and media safe and organized for the fandom.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 gap-8">
+                <div class="group">
+                    <div class="relative aspect-[3/4] rounded-[2rem] overflow-hidden border-[0.5px] border-white/40 shadow-xl bg-white/10">
+                        <button onclick="moveSlide('walo-subs', -1)" class="nav-arrow left-2 text-xs"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button onclick="moveSlide('walo-subs', 1)" class="nav-arrow right-2 text-xs"><i class="fa-solid fa-chevron-right"></i></button>
+                        <div class="carousel-view"><div id="track-walo-subs" class="carousel-track"></div></div>
+                    </div>
+                    <div class="mt-4 px-2">
+                        <p class="text-[11px] font-black text-slate-900 uppercase tracking-widest">Collecting PCs</p>
+                        <p class="text-[12px] text-slate-500 mt-1 italic">Hunting for TWICE & BINI sets.</p>
+                    </div>
+                </div>
+                <div class="group">
+                    <div class="relative aspect-[3/4] rounded-[2rem] overflow-hidden border-[0.5px] border-white/40 shadow-xl bg-white/10">
+                        <button onclick="moveSlide('concerts', -1)" class="nav-arrow left-2 text-xs"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button onclick="moveSlide('concerts', 1)" class="nav-arrow right-2 text-xs"><i class="fa-solid fa-chevron-right"></i></button>
+                        <div class="carousel-view"><div id="track-concerts" class="carousel-track"></div></div>
+                    </div>
+                    <div class="mt-4 px-2">
+                        <p class="text-[11px] font-black text-slate-900 uppercase tracking-widest">Concert Life</p>
+                        <p class="text-[12px] text-slate-500 mt-1 italic">Nothing beats seeing them live.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid lg:grid-cols-12 gap-12 items-start pb-20">
+        <div class="lg:col-span-4 sticky top-24">
+            <h3 class="text-[10px] font-black text-emerald-600 uppercase tracking-[0.5em] mb-4">02 / Active</h3>
+            <h4 class="text-3xl font-black italic tracking-tighter text-slate-900 leading-none">Pickleball & Badminton</h4>
+            <p class="mt-6 text-[13px] text-slate-500 font-medium leading-relaxed">
+                How I stay active. I love the tactical side of these sports—it's like chess, but you actually have to run.
+            </p>
+        </div>
+        <div class="lg:col-span-8 grid grid-cols-2 gap-8">
+            <div class="group">
+                <div class="relative aspect-square rounded-[2rem] overflow-hidden border-[0.5px] border-white/40 shadow-xl bg-white/10">
+                    <button onclick="moveSlide('pickleball', -1)" class="nav-arrow left-2"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button onclick="moveSlide('pickleball', 1)" class="nav-arrow right-2"><i class="fa-solid fa-chevron-right"></i></button>
+                    <div class="carousel-view"><div id="track-pickleball" class="carousel-track"></div></div>
+                </div>
+                <div class="mt-4 flex justify-between items-center px-2">
+                    <p class="text-[10px] font-black text-slate-900 uppercase tracking-widest">Pickleball</p>
+                    <span class="h-1.5 w-1.5 bg-emerald-500 rounded-full"></span>
+                </div>
+            </div>
+            <div class="group">
+                <div class="relative aspect-square rounded-[2rem] overflow-hidden border-[0.5px] border-white/40 shadow-xl bg-white/10">
+                    <button onclick="moveSlide('badminton', -1)" class="nav-arrow left-2"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button onclick="moveSlide('badminton', 1)" class="nav-arrow right-2"><i class="fa-solid fa-chevron-right"></i></button>
+                    <div class="carousel-view"><div id="track-badminton" class="carousel-track"></div></div>
+                </div>
+                <div class="mt-4 flex justify-between items-center px-2">
+                    <p class="text-[10px] font-black text-slate-900 uppercase tracking-widest">Badminton</p>
+                    <span class="h-1.5 w-1.5 bg-emerald-500 rounded-full"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
