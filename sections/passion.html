@@ -9,10 +9,10 @@
         
         <div class="space-y-16">
             <div class="grid md:grid-cols-12 gap-10 items-center group">
-                <div class="md:col-span-5">
-                    <div class="relative rounded-[2rem] overflow-hidden border-[0.5px] border-white/40 shadow-2xl transition-transform duration-700 group-hover:scale-[1.02] rotate-1">
-                        <img src="images/bg.png" alt="Project Polaris" class="w-full h-64 object-cover">
-                    </div>
+                <div class="md:col-span-5 relative h-64 rounded-[2rem] overflow-hidden border-[0.5px] border-white/40 shadow-2xl rotate-1 bg-white/10">
+                    <button onclick="moveSlide('polaris', -1)" class="nav-arrow left-4"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button onclick="moveSlide('polaris', 1)" class="nav-arrow right-4"><i class="fa-solid fa-chevron-right"></i></button>
+                    <div class="carousel-view"><div id="track-polaris" class="carousel-track"></div></div>
                 </div>
                 <div class="md:col-span-7">
                     <h4 class="text-2xl font-black text-slate-900 leading-tight mb-2 italic tracking-tight">Project: Polaris</h4>
@@ -28,18 +28,18 @@
             </div>
 
             <div class="grid md:grid-cols-12 gap-10 items-center group">
-                <div class="md:col-span-5 md:order-2">
-                    <div class="relative rounded-[2rem] overflow-hidden border-[0.5px] border-white/40 shadow-2xl transition-transform duration-700 group-hover:scale-[1.02] -rotate-1">
-                        <img src="images/bg.png" alt="Heart and Sole" class="w-full h-64 object-cover">
-                    </div>
+                <div class="md:col-span-5 md:order-2 relative h-64 rounded-[2rem] overflow-hidden border-[0.5px] border-white/40 shadow-2xl -rotate-1 bg-white/10">
+                    <button onclick="moveSlide('heart-sole', -1)" class="nav-arrow left-4"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button onclick="moveSlide('heart-sole', 1)" class="nav-arrow right-4"><i class="fa-solid fa-chevron-right"></i></button>
+                    <div class="carousel-view"><div id="track-heart-sole" class="carousel-track"></div></div>
                 </div>
-                <div class="md:col-span-7 md:order-1">
+                <div class="md:col-span-7 md:order-1 text-right">
                     <h4 class="text-2xl font-black text-slate-900 leading-tight mb-2 italic tracking-tight">Heart and Sole</h4>
                     <p class="text-[9px] font-black text-rose-600 uppercase tracking-[0.3em] mb-4">A Virtual Tribute</p>
                     <p class="text-[14px] text-slate-700 font-medium leading-relaxed mb-6 opacity-90">
                         I wanted to create something that honors the strength of mothers everywhere. Heart and Sole is a virtual run dedicated to those battling cancer. It’s my passion project where I handle everything from the branding to the medals, all to make sure these incredible women feel seen and celebrated.
                     </p>
-                    <div class="flex flex-wrap gap-2">
+                    <div class="flex flex-wrap gap-2 justify-end">
                         <span class="text-[8px] font-black text-slate-600 bg-white/10 border border-white/30 px-4 py-1.5 rounded-full uppercase tracking-widest shadow-sm">Mother's Day Run</span>
                         <span class="text-[8px] font-black text-slate-600 bg-white/10 border border-white/30 px-4 py-1.5 rounded-full uppercase tracking-widest shadow-sm">Community Strength</span>
                     </div>
@@ -58,10 +58,10 @@
 
         <div class="space-y-16">
             <div class="grid md:grid-cols-12 gap-10 items-center group">
-                <div class="md:col-span-5">
-                    <div class="relative rounded-[2rem] overflow-hidden border-[0.5px] border-white/40 shadow-2xl transition-transform duration-700 group-hover:scale-[1.02] rotate-1">
-                        <img src="images/bg.png" alt="Team Gwen" class="w-full h-64 object-cover">
-                    </div>
+                <div class="md:col-span-5 relative h-64 rounded-[2rem] overflow-hidden border-[0.5px] border-white/40 shadow-2xl rotate-1 bg-white/10">
+                    <button onclick="moveSlide('outreach', -1)" class="nav-arrow left-4"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button onclick="moveSlide('outreach', 1)" class="nav-arrow right-4"><i class="fa-solid fa-chevron-right"></i></button>
+                    <div class="carousel-view"><div id="track-outreach" class="carousel-track"></div></div>
                 </div>
                 <div class="md:col-span-7">
                     <h4 class="text-2xl font-black text-slate-900 leading-tight mb-2 italic tracking-tight">Team Gwen Outreach</h4>
@@ -77,18 +77,18 @@
             </div>
 
             <div class="grid md:grid-cols-12 gap-10 items-center group">
-                <div class="md:col-span-5 md:order-2">
-                    <div class="relative rounded-[2rem] overflow-hidden border-[0.5px] border-white/40 shadow-2xl transition-transform duration-700 group-hover:scale-[1.02] -rotate-1">
-                        <img src="images/bg.png" alt="AI Advocacy" class="w-full h-64 object-cover">
-                    </div>
+                <div class="md:col-span-5 md:order-2 relative h-64 rounded-[2rem] overflow-hidden border-[0.5px] border-white/40 shadow-2xl -rotate-1 bg-white/10">
+                    <button onclick="moveSlide('advocacy', -1)" class="nav-arrow left-4"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button onclick="moveSlide('advocacy', 1)" class="nav-arrow right-4"><i class="fa-solid fa-chevron-right"></i></button>
+                    <div class="carousel-view"><div id="track-advocacy" class="carousel-track"></div></div>
                 </div>
-                <div class="md:col-span-7 md:order-1">
+                <div class="md:col-span-7 md:order-1 text-right">
                     <h4 class="text-2xl font-black text-slate-900 leading-tight mb-2 italic tracking-tight">AI Advocacy & Speaking</h4>
                     <p class="text-[9px] font-black text-emerald-600 uppercase tracking-[0.3em] mb-4">Passing the Torch</p>
                     <p class="text-[14px] text-slate-700 font-medium leading-relaxed mb-6 opacity-90">
                         I’m genuinely excited about where AI is going, and I love sharing that spark with others. Whether I’m talking to the public sector or private companies, my goal is always to demystify the tech. It's about empowering people to understand the "Good, the Bad, and everything in between" of this AI revolution.
                     </p>
-                    <div class="flex flex-wrap gap-2">
+                    <div class="flex flex-wrap gap-2 justify-end">
                         <span class="text-[8px] font-black text-slate-600 bg-white/10 border border-white/30 px-4 py-1.5 rounded-full uppercase tracking-widest shadow-sm">Empowering Others</span>
                         <span class="text-[8px] font-black text-slate-600 bg-white/10 border border-white/30 px-4 py-1.5 rounded-full uppercase tracking-widest shadow-sm">AI Storytelling</span>
                     </div>

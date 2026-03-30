@@ -16,74 +16,32 @@
             background-attachment: fixed;
             color: #0f172a;
         }
-
-        /* Sidebar: WALO-Style Clear Glass */
-        .sidebar-clear {
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(20px) saturate(160%);
-            border-right: 0.5px solid rgba(255, 255, 255, 0.2);
-        }
-
-        /* Content Card: High-Saturation Clear Glass */
-        .content-card-clear {
-            background: rgba(255, 255, 255, 0.22);
-            backdrop-filter: blur(30px) saturate(150%);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
-        }
-
-        .sticky-sidebar {
-            position: -webkit-sticky;
-            position: sticky;
-            top: 0;
-            align-self: flex-start;
-        }
-
-        /* Enhanced Navigation Pill */
-        .nav-pill-container {
-            background: rgba(255, 255, 255, 0.2); 
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            padding: 8px; /* Increased padding */
-            border-radius: 9999px;
-            display: inline-flex;
-            gap: 12px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-        }
-
-        .nav-link {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            color: #1e293b; 
-            letter-spacing: 0.35em; /* Wider spacing for readability */
-            padding: 12px 28px; /* Bigger button area */
-            border-radius: 9999px;
-            font-size: 11px; /* Increased from 8px */
-            font-weight: 900;
-            text-transform: uppercase;
-        }
-
-        .nav-link:hover {
-            color: #0369a1;
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.05); /* Added scale effect */
-        }
-
-        .nav-link.active {
-            color: #ffffff;
-            background: #0369a1; 
-            box-shadow: 0 4px 15px rgba(3, 105, 161, 0.4);
-            transform: scale(1.1); /* Active tab stays slightly larger */
-        }
-
+        .sidebar-clear { background: rgba(255, 255, 255, 0.12); backdrop-filter: blur(20px) saturate(160%); border-right: 0.5px solid rgba(255, 255, 255, 0.2); }
+        .content-card-clear { background: rgba(255, 255, 255, 0.22); backdrop-filter: blur(30px) saturate(150%); border: 1px solid rgba(255, 255, 255, 0.3); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03); }
+        .nav-pill-container { background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.4); padding: 8px; border-radius: 9999px; display: inline-flex; gap: 12px; }
+        .nav-link { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); color: #1e293b; letter-spacing: 0.35em; padding: 12px 28px; border-radius: 9999px; font-size: 11px; font-weight: 900; text-transform: uppercase; }
+        .nav-link.active { color: #ffffff; background: #0369a1; box-shadow: 0 4px 15px rgba(3, 105, 161, 0.4); }
         .fade-in { animation: fadeIn 0.6s ease-out forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Carousel Specific Styles */
+        .carousel-view { position: relative; width: 100%; height: 100%; overflow: hidden; }
+        .carousel-track { display: flex; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); height: 100%; width: 100%; }
+        .nav-arrow {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.3); backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4); color: #0f172a;
+            width: 36px; height: 36px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; opacity: 0; transition: all 0.3s ease; z-index: 50;
+        }
+        .group:hover .nav-arrow { opacity: 1; }
+        .nav-arrow:hover { background: white; transform: translateY(-50%) scale(1.1); }
     </style>
 </head>
 <body class="antialiased">
     <div class="flex flex-col lg:flex-row min-h-screen items-start">
-        
-        <aside id="section-header" class="w-full lg:w-[500px] sticky-sidebar sidebar-clear px-8 py-12 min-h-screen flex flex-col items-center"></aside>
-
+        <aside id="section-header" class="w-full lg:w-[500px] sticky top-0 sidebar-clear px-8 py-12 min-h-screen flex flex-col items-center"></aside>
         <main class="flex-1 flex flex-col min-h-screen w-full">
             <div class="sticky top-0 z-30 p-10 flex justify-center">
                 <nav class="nav-pill-container">
@@ -92,11 +50,9 @@
                     <button onclick="switchTab('lifestyle')" id="btn-lifestyle" class="nav-link">Lifestyle</button>
                 </nav>
             </div>
-
             <div class="p-6 lg:p-14 lg:pt-0">
                 <div id="tab-content" class="content-card-clear rounded-[3rem] p-10 md:p-16 max-w-5xl mx-auto fade-in"></div>
             </div>
-
             <footer class="mt-auto p-12 text-center text-slate-500 font-bold text-[9px] uppercase tracking-[0.5em]">
                 Aunhel John Adoptante • 2026
             </footer>
@@ -104,25 +60,44 @@
     </div>
 
     <script>
+        const carouselStates = {};
+
+        async function hydrateCarousels() {
+            try {
+                const response = await fetch('data/gallery.json');
+                const data = await response.json();
+                document.querySelectorAll('.carousel-track').forEach(track => {
+                    const id = track.id.replace('track-', '');
+                    const images = data[id];
+                    if (images) {
+                        track.innerHTML = images.map(src => `
+                            <div class="flex-shrink-0 w-full h-full">
+                                <img src="${src}" class="w-full h-full object-cover">
+                            </div>
+                        `).join('');
+                        carouselStates[id] = 0;
+                        track.style.transform = `translateX(0%)`;
+                    }
+                });
+            } catch (err) { console.error("Gallery initialization error:", err); }
+        }
+
+        window.moveSlide = function(id, dir) {
+            const track = document.getElementById(`track-${id}`);
+            if (!track) return;
+            const slides = track.children.length;
+            carouselStates[id] = (carouselStates[id] + dir + slides) % slides;
+            track.style.transform = `translateX(-${carouselStates[id] * 100}%)`;
+        };
+
         async function loadSection(file, containerId = 'tab-content') {
             try {
                 const response = await fetch(`sections/${file}`);
                 const content = await response.text();
                 const container = document.getElementById(containerId);
-                if (containerId === 'tab-content') {
-                    container.classList.remove('fade-in');
-                    void container.offsetWidth;
-                    container.classList.add('fade-in');
-                }
                 container.innerHTML = content;
-                // Script re-execution
-                container.querySelectorAll('script').forEach(oldScript => {
-                    const newScript = document.createElement('script');
-                    Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
-                    newScript.appendChild(document.createTextNode(oldScript.innerHTML));
-                    oldScript.parentNode.replaceChild(newScript, oldScript);
-                });
-            } catch (err) { console.error(err); }
+                if (containerId === 'tab-content') await hydrateCarousels();
+            } catch (err) { console.error("Section load error:", err); }
         }
 
         function switchTab(tabName) {
